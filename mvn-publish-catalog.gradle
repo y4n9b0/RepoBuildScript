@@ -1,0 +1,35 @@
+/**
+ * https://docs.gradle.org/current/userguide/platforms.html#sec:sharing-catalogs
+ */
+apply plugin: 'maven-publish'
+apply plugin: 'version-catalog'
+catalog {
+    versionCatalog {
+        from(files("${rootDir}/versions.toml"))
+    }
+}
+
+def catalog_version = "1.0.0"
+publishing {
+    publications {
+        catalog(MavenPublication) {
+            groupId = 'com.y4n9b0'
+            artifactId = 'catalog'
+            version = catalog_version
+            from components.versionCatalog
+        }
+    }
+    repositories {
+        maven {
+            allowInsecureProtocol = true
+            url = catalog_version.endsWithIgnoreCase("SNAPSHOT")
+                    ? "http://maven.qa.changbaops.com/artifactory/libs-snapshot-local"
+                    : "http://maven.qa.changbaops.com/artifactory/libs-release-local"
+            credentials {
+                // ~/.gradle/gradle.properties
+                username "${MAVEN_USERNAME}"
+                password "${MAVEN_PASSWORD}"
+            }
+        }
+    }
+}

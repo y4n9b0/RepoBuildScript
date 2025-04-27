@@ -1,0 +1,30 @@
+/**
+ * https://docs.gradle.org/current/userguide/publishing_maven.html
+ * https://developer.android.google.cn/studio/build/maven-publish-plugin
+ */
+apply plugin: 'maven-publish'
+publishing {
+    publications {
+        release(MavenPublication) {
+            afterEvaluate { from components.release }
+            groupId = 'com.y4n9b0'
+            artifactId = POM_ARTIFACT_ID
+            version = POM_VERSION_NAME
+        }
+    }
+    repositories {
+        maven {
+            allowInsecureProtocol = true
+            url = POM_VERSION_NAME.endsWithIgnoreCase("SNAPSHOT")
+                    ? "http://maven.qa.changbaops.com/artifactory/libs-snapshot-local"
+                    : "http://maven.qa.changbaops.com/artifactory/libs-release-local"
+            credentials {
+                // ~/.gradle/gradle.properties
+                username "${MAVEN_USERNAME}"
+                password "${MAVEN_PASSWORD}"
+            }
+        }
+    }
+}
+
+apply from: "${rootDir}/git-tag.gradle"

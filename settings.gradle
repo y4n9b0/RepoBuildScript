@@ -1,0 +1,46 @@
+pluginManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
+        maven {
+            url "http://maven.qa.changbaops.com/artifactory/libs-snapshot-local"
+            allowInsecureProtocol true
+        }
+        maven {
+            url "http://maven.qa.changbaops.com/artifactory/libs-release-local"
+            allowInsecureProtocol true
+        }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        gradlePluginPortal()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url "https://mirrors.tencent.com/nexus/repository/maven-public/" }
+        maven {
+            url "http://maven.qa.changbaops.com/artifactory/libs-snapshot-local"
+            allowInsecureProtocol true
+        }
+        maven {
+            url "http://maven.qa.changbaops.com/artifactory/libs-release-local"
+            allowInsecureProtocol true
+        }
+    }
+    versionCatalogs {
+        libs {
+            // from("com.y4n9b0:catalog:1.0.0")
+            from(files("${rootDir}/versions.toml"))
+        }
+    }
+}
+
+include ':util'
+include ':widget'

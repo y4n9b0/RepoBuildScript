@@ -1,0 +1,123 @@
+# https://docs.gradle.org/current/userguide/platforms.html
+# https://melix.github.io/blog/2021/03/version-catalogs.html
+[versions]
+compileSdk = "34"
+buildTools = "34.0.0"
+minSdk = "28"
+targetSdk = "34"
+kotlin = "1.8.10"
+activity = "1.5.1"
+fragment = "1.5.4"
+coroutine = "1.6.4"
+lifecycle = "2.6.2"
+datastore = "1.0.0"
+navigation = "2.5.3"
+glide = "4.16.0"
+retrofit = "2.9.0"
+serialization = "1.6.0"
+room = "2.5.1"
+chucker = "4.0.0"
+aws = "2.25.0"
+facebook = "17.0.2"
+twitter = "3.3.0"
+firebase-bom = "33.4.0"
+
+[libraries]
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+core-ktx = "androidx.core:core-ktx:1.8.0"
+activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
+fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutine" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutine" }
+lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+appcompat = "androidx.appcompat:appcompat:1.6.1"
+material = "com.google.android.material:material:1.6.1"
+constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
+datastore-preferences-rxjava3 = { module = "androidx.datastore:datastore-preferences-rxjava3", version.ref = "datastore" }
+recyclerview = "androidx.recyclerview:recyclerview:1.3.2"
+recyclerview-selection = "androidx.recyclerview:recyclerview-selection:1.1.0"
+viewpager2 = "androidx.viewpager2:viewpager2:1.1.0"
+navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+compose-runtime = "androidx.compose.runtime:runtime:1.5.4"
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glide-compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+glide-transformations = "jp.wasabeef:glide-transformations:4.3.0"
+webpdecoder = "com.github.zjupure:webpdecoder:2.6.4.16.0"
+xxPermissions = "com.github.getActivity:XXPermissions:18.5"
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+okhttp = "com.squareup.okhttp3:okhttp:4.10.0"
+okio = "com.squareup.okio:okio:3.2.0"
+gson = "com.google.code.gson:gson:2.9.0"
+logan = "com.dianping.android.sdk:logan:1.2.4"
+startup-runtime = "androidx.startup:startup-runtime:1.1.1"
+documentfile = "androidx.documentfile:documentfile:1.0.1"
+chucker = { module = "com.github.chuckerteam.chucker:library", version.ref = "chucker" }
+chucker-no-op = { module = "com.github.chuckerteam.chucker:library-no-op", version.ref = "chucker" }
+serialization-protobuf = { module = "org.jetbrains.kotlinx:kotlinx-serialization-protobuf", version.ref = "serialization" }
+# 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1'
+serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+mmkv = "com.tencent:mmkv-static:1.3.9"
+aliyun-oss = "com.aliyun.dpa:oss-android-sdk:2.9.11"
+tencent-cloud = "com.qcloud.cos:cos-android-lite:5.9.+"
+aws-s3 = { module = "com.amazonaws:aws-android-sdk-s3", version.ref = "aws" }
+aws-mobile = { module = "com.amazonaws:aws-android-sdk-mobile-client", version.ref = "aws" }
+guava = "com.google.guava:guava:31.0.1-jre"
+leakcanary = "com.squareup.leakcanary:leakcanary-android:2.10"
+blockcanary = "com.github.markzhai:blockcanary-android:1.5.0"
+zxing = "com.google.zxing:core:3.4.1"
+lottie = "com.airbnb.android:lottie:6.0.1"
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+# https://opendocs.alipay.com/open/204/105296/#%E5%AF%BC%E5%85%A5%E6%94%AF%E4%BB%98%E5%AE%9D%20SDK
+alipay = "com.alipay.sdk:alipaysdk-android:15.8.17"
+google-pay = "com.android.billingclient:billing-ktx:7.0.0"
+umeng-common = "com.umeng.umsdk:common:9.7.1"
+umeng-asms = "com.umeng.umsdk:asms:1.8.2"
+umeng-uverify = "com.umeng.umsdk:uverify:2.6.2"
+umeng-uverify-main = "com.umeng.umsdk:uverify-main:2.2.3"
+umeng-uverify-logger = "com.umeng.umsdk:uverify-logger:2.2.2"
+umeng-uverify-crashshield = "com.umeng.umsdk:uverify-crashshield:2.1.4"
+wechat = "com.tencent.mm.opensdk:wechat-sdk-android:6.8.28"
+exifinterface = "androidx.exifinterface:exifinterface:1.3.6"
+transition = "androidx.transition:transition:1.4.1"
+banner = "io.github.youth5201314:banner:2.2.2"
+skeleton = "com.ethanhua:skeleton:1.1.2"
+shimmerlayout = "io.supercharge:shimmerlayout:2.1.0"
+multidex = "androidx.multidex:multidex:2.0.1"
+viewpagerindicator = "com.github.zhpanvip:viewpagerindicator:1.2.3"
+
+okhttpprofiler = "com.localebro:okhttpprofiler:1.0.8"
+alphaplayer = "com.github.bytedance:AlphaPlayer:1.0.6"
+toolargetool = "com.gu.android:toolargetool:0.3.0"
+work-runtime = "androidx.work:work-runtime-ktx:2.7.0"
+
+facebook-login = { module = "com.facebook.android:facebook-login", version.ref = "facebook" }
+facebook-share = { module = "com.facebook.android:facebook-share", version.ref = "facebook" }
+twitter = { module = "com.twitter.sdk.android:twitter", version.ref = "twitter" }
+play-services-auth = "com.google.android.gms:play-services-auth:21.2.0"
+
+y4n9b0-util = "com.y4n9b0:util:1.0.0"
+y4n9b0-widget = "com.y4n9b0:widget:1.0.0"
+
+[bundles]
+ktx = ["activity-ktx", "fragment-ktx", "core-ktx"]
+coroutine = ["kotlinx-coroutines-core", "kotlinx-coroutines-android"]
+lifecycle = ["lifecycle-runtime-ktx", "lifecycle-viewmodel-ktx", "lifecycle-livedata-ktx"]
+datastore = ["datastore-preferences", "datastore-preferences-rxjava3"]
+navigation = ["navigation-fragment-ktx", "navigation-ui-ktx"]
+glide = ["glide", "glide-transformations", "webpdecoder"]
+retrofit = ["retrofit", "retrofit-converter-gson"]
+chucker = ["chucker", "chucker-no-op"]
+serialization = ["serialization-protobuf", "serialization-json"]
+aws = ["aws-s3", "aws-mobile"]
+room = ["room-runtime", "room-ktx"]
+
+[plugins]

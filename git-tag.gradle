@@ -1,0 +1,45 @@
+def reset = "\033[0m"      // 重置所有样式
+def bold = "\033[1m"       // 加粗
+def red = "\033[31m"       // 红色，用于错误
+def green = "\033[32m"     // 绿色，用于成功
+def yellow = "\033[33m"    // 黄色，用于告警
+
+tasks.register('createGitTag') {
+    def projectName = project.name
+    def projectDir = project.projectDir
+    def tagName = "v${POM_VERSION_NAME}"
+    def snapshot = POM_VERSION_NAME.endsWithIgnoreCase("SNAPSHOT")
+
+    configure {
+        onlyIf {
+            def publishSuccess = tasks.withType(PublishToMavenRepository).every { publishTask ->
+                publishTask.state.failure == null
+            }
+            if (!publishSuccess) {
+                println "${yellow}Skipping $bold$projectName$reset$yellow git tag creation because the publish task failed.$reset"
+            } else if (snapshot) {
+                println "Skipping $bold$projectName$reset git tag creation because the publish is SNAPSHOT."
+            }
+            // 非快照版 publish 任务成功时才执行 createGitTag
+            !snapshot && publishSuccess
+        }
+    }
+
+    doLast {
+        println "Creating $bold$projectName$reset git tag $tagName."
+        def command = "git --git-dir=$projectDir/.git --work-tree=$projectDir tag $tagName && git --git-dir=$projectDir/.git --work-tree=$projectDir push origin $tagName"
+        def process = ["sh", "-c", command].execute()
+        process.waitFor()
+        def code = process.exitValue()
+        if (code == 0) {
+            println "$green$bold$projectName$reset$green git tag $tagName created successfully.$reset"
+        } else {
+            println "${red}Failed to create $bold$projectName$reset$red git tag $tagName, errCode: $code!$reset"
+        }
+    }
+}
+
+// 在发布任务结束后执行 createGitTag 任务
+tasks.withType(PublishToMavenRepository).configureEach {
+    finalizedBy createGitTag
+}
